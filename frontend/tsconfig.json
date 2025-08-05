@@ -16,6 +16,9 @@
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "@tailwindcss/postcss": {},
       }
     ],
     "paths": {
