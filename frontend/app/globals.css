@@ -137,9 +137,9 @@
   }
 
   /* Placeholder */
-  .placeholder {
+  /* .ph {
     @apply placeholder:text-light-400 dark:placeholder:text-light-600;
-  }
+  } */
 
   /* Other Utilities */
   .invert-colors {
@@ -164,4 +164,3 @@
     );
   }
 }
-
