@@ -33,7 +33,7 @@ const NavContent = () => {
                 isActive
                   ? "bg-primary-500 rounded-lg [&&]:text-white"
                   : "text-dark300_light900"
-              } flex items-center justify-start gap-4 bg-transparent p-4`}
+              } flex items-center justify-start gap-4 bg-transparent p-3`}
             >
               <Image
                 src={item.imgURL}
@@ -62,7 +62,7 @@ const MobileNav = () => {
           width={36}
           height={36}
           alt="Menu"
-          className="invert-color sm:hidden"
+          className="invert-colors sm:hidden"
         />
       </SheetTrigger>
       <SheetContent
@@ -77,7 +77,7 @@ const MobileNav = () => {
             alt="StackOverflow"
           />
           <p className="h2-bold text-dark100_light900">
-            Stack <span className="text-primary-500">Overflow</span>
+            Stack <span className="text-[#FF7000]">Overflow</span>
           </p>
         </Link>
         <SheetHeader>
@@ -94,22 +94,37 @@ const MobileNav = () => {
             <NavContent />
           </SheetClose>
           <SignedOut>
-            <div className="flex flex-col gap-3">
-              <SheetClose asChild>
-                <Link href="/sign-in">
-                  <Button className="small-medium min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none bg-dark-400">
-                    <span className="text-primary-500">Log In</span>
-                  </Button>
-                </Link>
-              </SheetClose>
-              <SheetClose asChild>
-                <Link href="/sign-up">
-                  <Button className="small-medium light-border-2 text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none bg-dark-300 text-white">
-                    Sign Up
-                  </Button>
-                </Link>
-              </SheetClose>
-            </div>
+          <div className="flex flex-col gap-3">
+              
+              <Link href="/sign-in">
+                <Button className="small-medium min-h-[41px] w-full rounded-lg px-4 py-3 mt-4 shadow-none  bg-light-800 dark:bg-dark-300">
+                  <Image
+                  src="/assets/icons/account.svg"
+                  alt="login"
+                  width={20}
+                  height={20}
+                  className='invert-colors lg:hidden'
+                  />
+                  <span className="text-primary-500">Log In</span>
+                </Button>
+              </Link>
+            
+            
+              <Link href="/sign-up">
+                <Button className="small-medium light-border-2 text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none bg-light-800 dark:bg-dark-400 text-center">
+                <Image
+                  src="/assets/icons/sign-up.svg"
+                  alt="sign-up"
+                  width={20}
+                  height={20}
+                  className='invert-colors lg:hidden'
+                  />
+                  Sign Up
+                 
+                </Button>
+              </Link>
+            
+          </div>
           </SignedOut>
         </div>
       </SheetContent>

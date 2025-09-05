@@ -32,14 +32,14 @@ const Navbar = () => {
             
                 
             
-        <SignedOut>
+        {/* <SignedOut>
         <SignInButton mode="modal">
           <button className="px-3 py-1 rounded bg-white text-blue-600 hover:bg-gray-400 border-blue-600 ">Log in</button>
         </SignInButton>
         <SignUpButton mode="modal">
           <button className="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-800 ">Sign Up</button>
         </SignUpButton>
-      </SignedOut>
+      </SignedOut> */}
 
       <SignedIn>
         <UserButton afterSignOutUrl="/" />
