@@ -135,6 +135,15 @@
   .subtle-regular {
     @apply text-[10px] font-normal leading-[13px];
   }
+  /* global.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
 
   /* Placeholder */
   /* .ph {

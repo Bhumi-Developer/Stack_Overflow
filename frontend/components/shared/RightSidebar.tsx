@@ -4,33 +4,33 @@ import Image from 'next/image'
 import RenderTag from './RenderTag'
 
 interface Tag {
-    _id: number;
+    _id: string;
     name: string;
     totalQues: number;
   }
 
 const hotQues = [
-    {_id:1,title: 'How are you doing??How are you doing??'},
-    {_id:2,title: 'How are you doing??'},
-    {_id:3,title: 'How are you doing??'},
-    {_id:4,title: 'How are you doing??'},
-    {_id:5,title: 'How are you doing??'},
-    {_id:6,title: 'How are you doing??'},
+    {_id:"1",title: 'How are you doing??How are you doing??'},
+    {_id:"2",title: 'How are you doing??'},
+    {_id:"3",title: 'How are you doing??'},
+    {_id:"4",title: 'How are you doing??'},
+    {_id:"5",title: 'How are you doing??'},
+    {_id:"6",title: 'How are you doing??'},
 ];
 
 const popularTags: Tag[] = [
-    {_id:1,name: 'javascript',totalQues: 5},
-    {_id:2,name: 'javascript',totalQues: 5},
-    {_id:3,name: 'javascript',totalQues: 5},
-    {_id:4,name: 'javascript',totalQues: 5},
-    {_id:5,name: 'javascript',totalQues: 5},
+    {_id:"1",name: 'javascript',totalQues: 5},
+    {_id:"2",name: 'javascript',totalQues: 5},
+    {_id:"3",name: 'javascript',totalQues: 5},
+ 
 ]
 
 const RightSidebar = () => {
   
   return (
     <section
-    className='background-light900_dark200 light-border custom-scrollbar sticky right-0 top-0 flex h-screen w-[350px] flex-col overflow-y-auto border-l p-6 pt-24 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[300px]'>
+    className="background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-[350px] flex-col overflow-y-auto border-l p-6 pt-24 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[300px] no-scrollbar"
+  >
         <div>
             <h3 className='h3-bold text-dark200_light900'>Top Questions</h3>
             <div className='mt-7 flex w-full flex-col gap-[30px]'>
