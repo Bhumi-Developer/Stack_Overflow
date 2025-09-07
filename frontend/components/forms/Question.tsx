@@ -18,12 +18,15 @@ import { Input } from "@/components/ui/input"
 import { QuestionsSchema } from "@/lib/validations"
 import * as z from "zod"
 import { Badge } from '../ui/badge';
-const [isSubmitting,setIsSubmitting] = useState(false)
+
 
 const type: any = 'create'
 
 
 export function Question() {
+  const [isSubmitting,setIsSubmitting] = useState(false)
+
+  
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
