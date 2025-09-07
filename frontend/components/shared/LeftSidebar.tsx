@@ -1,5 +1,6 @@
 'use client'
-import React from 'react'
+import React,{useRef} from 'react'
+import { Editor } from '@tinymce/tinymce-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { sidebarLinks } from "@/constants";
@@ -23,14 +24,14 @@ const LeftSidebar = () => {
           pathname === item.route;
         return (
          
-            <Link key={item.route}
-              href={item.route}
-              className={`${
-                isActive
-                  ? "bg-primary-500 rounded-lg [&&]:text-white"
-                  : "text-dark300_light900"
-              } flex items-center text-center justify-start gap-4 bg-transparent p-4`}
-            >
+          <Link
+          key={item.route}
+          href={item.route}
+          className={`flex items-center text-center justify-start gap-4 rounded-lg p-4
+            ${isActive ? "bg-red-500 text-white" : "text-dark-300 dark:text-light-900"}
+          `}
+        >
+        
               <Image
                 src={item.imgURL}
                 alt={item.label}

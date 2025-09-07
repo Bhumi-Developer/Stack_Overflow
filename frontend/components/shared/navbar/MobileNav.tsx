@@ -31,8 +31,8 @@ const NavContent = () => {
               href={item.route}
               className={`${
                 isActive
-                  ? "bg-primary-500 rounded-lg [&&]:text-white"
-                  : "text-dark300_light900"
+                  ? "bg-red-500 rounded-lg [&&]:text-white"
+                  : " text-dark-300 dark:text-light-900 !important"
               } flex items-center justify-start gap-4 bg-transparent p-3`}
             >
               <Image

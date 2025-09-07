@@ -79,7 +79,7 @@
 
   /* Typography */
   .h1-bold {
-    @apply text-[26px] font-bold leading-[42px] tracking-tighter;
+    @apply text-[26px] font-bold leading-[20px] tracking-tighter;
   }
   .h2-bold {
     @apply text-[20px] font-bold leading-[31.2px];
