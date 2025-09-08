@@ -5,6 +5,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
+import {useRouter,usePathname} from 'next/navigation'
 import {
   Form,
   FormControl,
@@ -18,15 +19,21 @@ import { Input } from "@/components/ui/input"
 import { QuestionsSchema } from "@/lib/validations"
 import * as z from "zod"
 import { Badge } from '../ui/badge';
+import { createQuestion } from '@/lib/actions/question.action';
 
 
 const type: any = 'create'
 
+interface Props{
+  mongoUserId: string;
+}
 
-export function Question() {
+export function Question({mongoUserId}: Props) {
   const [isSubmitting,setIsSubmitting] = useState(false)
+  const router = useRouter();
+  const pathname = usePathname();
 
-  
+
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
@@ -36,10 +43,16 @@ export function Question() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     try{
-
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
+      router.push('/')
     }catch(error){
 
     }finally{
@@ -120,7 +133,9 @@ export function Question() {
           "undo redo |codesample|forecolor bold italic underline |alignright alignjustify|algnleft aligncenter| bullist numlist | link | removeformat",
         branding: false, // remove TinyMCE watermark
       }}
-      
+      value={field.value}
+      onBlur={field.onBlur}
+      onEditorChange={(content)=> field.onChange(content)}
       initialValue=""
     />
               </FormControl>
