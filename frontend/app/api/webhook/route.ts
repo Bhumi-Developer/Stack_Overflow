@@ -1,6 +1,6 @@
 import { verifyWebhook } from '@clerk/nextjs/webhooks'
-import { NextRequest } from 'next/server'
-import { createUser, updateUser } from '@/lib/actions/user.action'
+import { NextRequest, NextResponse } from 'next/server'
+import { createUser, updateUser,deleteUser } from '@/lib/actions/user.action'
 
 export async function POST(req: NextRequest) {
   try {
@@ -29,7 +29,8 @@ export async function POST(req: NextRequest) {
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     )
-    }else if (eventType === 'user.updated') {
+    }
+     if (eventType === 'user.updated') {
       const { id, email_addresses, image_url, username, first_name, last_name } = evt.data
 
       mongoUser = await updateUser({
@@ -52,11 +53,27 @@ export async function POST(req: NextRequest) {
     )
 
    
-  }} catch (err) {
+  }
+  if (eventType === 'user.deleted') {
+      const { id} = evt.data
+
+    const deletedUser = await deleteUser({
+      clerkId: id,
+    })
+       return NextResponse.json({
+        message: 'Ok',
+       user: deletedUser
+      })}
+      return new Response(JSON.stringify({ status: 200} ))
+    }
+     catch (err) {
     console.error('Error verifying webhook:', err)
     return new Response(
       JSON.stringify({ error: 'Error verifying webhook' }),
       { status: 400, headers: { 'Content-Type': 'application/json' } }
     )
   }
+
+
 }
+
